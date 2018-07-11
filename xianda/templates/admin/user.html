@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import render_pagination %}
+{% block body %}
+    <div style="background-color:white;width:1000px;height:450px;border:1px solid white;margin:0 auto" >
+        <div style="width:800px;margin:0 auto">
+            <h2>用户管理</h2>
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>用户名</th>
+                  <th>角色</th>
+                  <th>操作</th>
+                </tr>
+                <tbody>
+                  {% for user in pagination.items %}
+                  <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                      <div class="btn-group" role="group">
+                        <a href="#" type="button" class="btn btn-default" title＝"编辑">
+                          <span class="glyphicon glyphicon-pencil" title＝"编辑" aria-hidden="true"></span>
+                        </a>
+                        <a href="{{ url_for('del_user', user_id = user.id) }}" type="button" class="btn btn-default" title＝"删除">
+                          <span class="glyphicon glyphicon-trash" title＝"删除" aria-hidden="true"></span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </thead>
+            </table>
+        </div>
+        <div style="margin:10px 100px;border:1px solid #ddd"><a class="right" style="margin-top:10px;" href="{{ url_for('admin') }}">&lt&lt&lt返回</a></div>
+        {{ render_pagination(pagination, 'user') }}
+    </div>
+{% endblock %}
+{% block right %}{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% from "macros.html" import render_pagination %}
+{% from "macros.html" import render_form %}
+{% block body %}
+    <hr>
+    <h3>添加文章</h3>
+    {{ render_form(form, url_for('add_article')) }}
+{% endblock %}
+{% block right %}{% endblock %}

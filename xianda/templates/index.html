@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import render_pagination %}
+ <!--left-->
+ {% block body %}
+ <div class="left" id="c_left">
+   <div class="s_tuijian">
+   <h2>文章<span>推荐</span></h2>
+   </div>
+   <div class="content_text">
+   <!--wz-->
+   <div class="wz">
+       {% for article in pagination.items %}
+            <h3><a href="{{ url_for('detail', article_id=article.id) }}">{{ article.title }}</a></h3>
+             <dl>
+               <dt></dt>
+               <dd>
+                 <p class="dd_text_1">{{ article.content }}</p>
+               <p class="dd_text_2">
+               <span class="left author">{{ article.author }}</span><span class="left sj">{{ article.time }}</span>
+               <span class="left fl">分类:<a {% if article.tag=='生活随想' %} href="{{ url_for('thinking') }}" {% else %} href="{{ url_for('learning') }}"{% endif %}>{{ article.tag }}</a></span><span class="left yd"><a href="{{ url_for('detail', article_id=article.id) }}" title="阅读全文">阅读全文</a>
+               </span>
+                <div class="clear"></div>
+               </p>
+               </dd>
+               <div class="clear"></div>
+             </dl>
+       {% endfor %}
+    </div>
+   {{ render_pagination(pagination, 'index') }}
+   <!--wz end-->
+   </div>
+ </div>
+{% endblock %}

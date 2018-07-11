@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+<div style="width:500px; height:300px; background-color: white; margin:0 auto" >
+    <div style="width: 170px;height: 100px;margin: 0 auto;padding-top: 20px;" >
+        <form method="POST">
+            <h3>注册好友</h3>
+            <h4>昵称</h4>
+            <input type="text" name="name">
+            <h4>密码</h4>
+            <input type="password" name="pwd1">
+            <h4>确认密码</h4>
+            <input type="password" name="pwd2">
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block right %}{% endblock %}
